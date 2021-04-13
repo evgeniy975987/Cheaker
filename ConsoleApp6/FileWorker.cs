@@ -25,8 +25,8 @@ namespace ConsoleApp6
             for (; i <= threadCount; i++) {
                 Thread thread = new Thread(() => { Read(startCycle , endCycle ); });
                 thread.Start();
-                endCycle = endCycle - (endCycle / threadCount);
-                startCycle = endCycle - (endCycle / threadCount);
+                endCycle = endCycle - (endCycle / 10);
+                startCycle = endCycle - (endCycle / 10);
             }
 
             if (endCycle > 0) {
