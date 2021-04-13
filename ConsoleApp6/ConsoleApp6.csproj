@@ -9,4 +9,13 @@
     <PackageReference Include="Leaf.xNet" Version="5.2.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="proxy1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="proxy2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
