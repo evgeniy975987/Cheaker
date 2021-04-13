@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -37,17 +38,21 @@ namespace ConsoleApp6
 
         public void Read(int startСycle, int endCycle )
         {
+            Stopwatch sw = new Stopwatch();
+
             for (int i = startСycle ; i <= endCycle; i++)
             {
+                sw.Restart();
                 Cheaker cheaker = new Cheaker();
                 string responce = cheaker.Request(_proxyArray[i]);
+                sw.Stop();
                 if (responce != null) {
                     Proxy proxy = new Proxy(_proxyArray[i], responce);
                     _workingProxies.Add(proxy.getProxy());
-                    Console.WriteLine(proxy.getProxy());
+                    Console.WriteLine(proxy.getProxy() + "Запрос выполнен за мс: " + sw.ElapsedMilliseconds.ToString());
                 }
                 else {
-                    Console.WriteLine(_proxyArray[i] + " не актуален ");
+                    Console.WriteLine(_proxyArray[i] + " не актуален " + "Запрос выполнен за мс: " + sw.ElapsedMilliseconds.ToString()); 
                 }
             }
             if (startСycle == 0) Write();
