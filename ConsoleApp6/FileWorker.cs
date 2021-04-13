@@ -21,11 +21,12 @@ namespace ConsoleApp6
             int endCycle = _proxyArray.Length;
             int startCycle = endCycle - (endCycle / threadCount);
             int i = 0;
+            
             for (; i <= threadCount; i++) {
                 Thread thread = new Thread(() => { Read(startCycle , endCycle ); });
                 thread.Start();
-                endCycle = endCycle - (endCycle / 10) - 1;
-                startCycle = endCycle - (endCycle / 10);
+                endCycle = endCycle - (endCycle / threadCount);
+                startCycle = endCycle - (endCycle / threadCount);
             }
 
             if (endCycle > 0) {
@@ -36,7 +37,7 @@ namespace ConsoleApp6
 
         public void Read(int startСycle, int endCycle )
         {
-            for (int i = startСycle ; i < endCycle; i++)
+            for (int i = startСycle ; i <= endCycle; i++)
             {
                 Cheaker cheaker = new Cheaker();
                 string responce = cheaker.Request(_proxyArray[i]);

@@ -14,7 +14,7 @@ namespace ConsoleApp6
         public  string Request(string proxy) {
             using (HttpRequest request = new HttpRequest()) {
                 request.KeepAlive = true;
-                request.ConnectTimeout = 1500;
+                request.ConnectTimeout = 1600;
                 try {
                     request.Proxy = ProxyClient.Parse(proxy);
                 }
@@ -43,14 +43,14 @@ namespace ConsoleApp6
         }
 
          void getResponce(HttpRequest request) {
-                try
-                {
-                    responce = request.Get("http://api.ipify.org/").ToString();
+            try
+            {
+                responce = request.Get("http://api.ipify.org/").ToString();
             }
-                catch
-                {
-                    responce = null;
-                }
+            catch
+            {
+                responce = null;
+            }
         }
     }
 }
